@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eye chart</title>
+  <style>
+    body {
+      background-color: white;
+      background-repeat: no-repeat;
+      /*background-image: url('./EyeChart.png');*/
+      width: 100%;
+    }
+    .cont {
+    }
+    .cont > * {
+      display: inline-block;
+      clear:both;
+    }
+    .cont > h6 {
+      float: left;
+      margin: 16px 0px;
+    }
+    .cont > h6 {
+      border: 3px solid white;
+    }
+    .cont:hover > h6 {
+      border-bottom: 3px solid #A66;
+    }
+
+    #chart {
+      font-family: 'Courier New', Courier;
+      text-align: center;
+      text-rendering: optimizeLegibility;
+      /*color: red;*/
+    }
+    #ft70 {
+      font-size: 150px;
+      margin-top: -30px;
+      font-weight: 600;
+    }
+    #ft60 {
+      font-size: 125px;
+      margin-top: -55px;
+      letter-spacing: 30px;
+      font-weight: 600;
+    }
+    #ft50 {
+      font-size: 115px;
+      margin-top: -45px;
+      letter-spacing: 30px;
+      font-weight: 600;
+    }
+    #ft40 {
+      font-size: 90px;
+      margin-top: -31px;
+      letter-spacing: 30px;
+      font-weight: 600;
+    }
+    #ft30 {
+      font-size: 65px;
+      margin-top: -5px;
+      letter-spacing: 38px;
+      font-weight: 600;
+    }
+    #ft20 {
+      font-size: 45px;
+      margin-top: 10px;
+      letter-spacing: 28px;
+      font-weight: 600;
+    }
+    #ft15 {
+      font-size: 35px;
+      margin-top: 14px;
+      letter-spacing: 20px;
+      font-weight: 600;
+    }
+    #ft10 {
+      font-size: 23px;
+      margin-top: 20px;
+      letter-spacing: 21px;
+      font-weight: 600;
+    }
+    #ft7 {
+      font-size: 17px;
+      margin-top: 24px;
+      letter-spacing: 11px;
+      font-weight: 600;
+    }
+    #ft4 {
+      font-size: 12px;
+      margin-top: 25px;
+      letter-spacing: 7px;
+      font-weight: 600;
+    }
+    #genBut {
+      position: fixed;
+      right:20px;
+      top:20px;
+      font-size:20px;
+    }
+  </style>
+  <script>
+  'use strict';
+
+  var snellenAlphabet = 'CDEFLOPTZ';// 'BCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+  function randomString(len, charSet) {
+      charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var randomString = '';
+      for (var i = 0; i < len; i++) {
+          var randomPoz = Math.floor(Math.random() * charSet.length);
+          randomString += charSet.substring(randomPoz,randomPoz+1);
+      }
+      return randomString;
+  }
+
+  function generateLine(id, len) {
+    var el = document.querySelector('#' + id);
+    if (el.childNodes.length > 0)
+      el.removeChild(el.childNodes[0]);
+    el.appendChild( document.createTextNode(randomString(len, snellenAlphabet)));
+  }
+
+  function generateChart() {
+    var lines = [
+      ['ft70', 1],
+      ['ft60', 2],
+      ['ft50', 4],
+      ['ft30', 6],
+      ['ft20', 8],
+      ['ft15', 10],
+      ['ft10', 10],
+      ['ft7', 11],
+      ['ft4', 17]
+    ]
+    for (var i=0; i<lines.length; i++)
+      generateLine(lines[i][0], lines[i][1]);
+  }
+  </script>
+</head>
+<body>
+<button id="genBut" onclick="javascript:generateChart()">Randomize chart</button>
+<section id="chart">
+  <section class="cont">
+    <h6>70ft - 21m</h6>
+    <div id="ft70">Q</div>
+  </section>
+  <section class="cont">
+    <h6>60ft - 18m</h6>
+    <div id="ft60">WR</div>
+  </section>
+  <section class="cont">
+    <h6>50ft - 15m</h6>
+    <div id="ft50">RBHQ</div>
+  </section>
+  <section class="cont">
+    <h6>40ft - 12m</h6>
+    <div id="ft40">YGSOT</div>
+  </section>
+  <section class="cont">
+    <h6>30ft - 9m</h6>
+    <div id="ft30">JBPNXR</div>
+  </section>
+  <section class="cont">
+    <h6>20ft - 8m</h6>
+    <div id="ft20">OHTTMNYZ</div>
+  </section>
+  <section class="cont">
+    <h6>15ft - 4.5m</h6>
+    <div id="ft15">NJMEGXTBHW</div>
+  </section>
+  <section class="cont">
+    <h6>10ft - 3m</h6>
+    <div id="ft10">ISUROPOVCP</div>
+  </section>
+  <section class="cont">
+    <h6>7ft - 2.1m</h6>
+    <div id="ft7">LELBOGDFTMP</div>
+  </section>
+  <section class="cont">
+    <h6>4ft - 1.2m</h6>
+    <div id="ft4">QVKKXTBVXCKJQKCSH</div>
+  </section>
+</section>
+<p style="margin-top: 100px">Chart copied from <a href='http://lancesjournal.com/eye-test800x600.html'>lance</a>. That link is gone,
+and I've been using it for years, so I made a JS copy. I look at it from 130cm.</p>
+<script>
+  generateChart();
+</script>
+</body>
+</html>
